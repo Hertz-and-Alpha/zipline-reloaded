@@ -17,13 +17,14 @@
 import sys
 import os
 from pathlib import Path
+import time
 
 # ensure the current directory is on sys.path
 # so versioneer can be imported when pip uses
 # PEP 517/518 build rules.
 # https://github.com/python-versioneer/python-versioneer/issues/193
 sys.path.append(Path(__file__).resolve(strict=True).parent.as_posix())
-import versioneer  # noqa: E402
+# import versioneer  # noqa: E402
 from setuptools import Extension, find_packages, setup  # noqa: E402
 
 
@@ -132,11 +133,12 @@ ext_modules = [
 for ext_module in ext_modules:
     ext_module.cython_directives = dict(language_level="3")
 
-version = versioneer.get_version()
+# version = versioneer.get_version()
+version = time.strftime('%Y.%m.%d.%H.%M.%S', time.localtime(time.time()))
 
 setup(
     version=version,
-    cmdclass=LazyBuildExtCommandClass(versioneer.get_cmdclass()),
+    # cmdclass=LazyBuildExtCommandClass(versioneer.get_cmdclass()),
     entry_points={
         "console_scripts": [
             "zipline = zipline.__main__:main",
