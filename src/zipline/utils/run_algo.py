@@ -21,8 +21,8 @@ from zipline.data.benchmarks import get_benchmark_returns_from_file
 from zipline.data.data_portal import DataPortal
 from zipline.finance import metrics
 from zipline.finance.trading import SimulationParameters
-from zipline.pipeline.data import USEquityPricing
-from zipline.pipeline.loaders import USEquityPricingLoader
+from zipline.pipeline.data import KREquityPricing
+from zipline.pipeline.loaders import KREquityPricingLoader
 
 import zipline.utils.paths as pth
 from zipline.extensions import load
@@ -122,7 +122,7 @@ def _run(
         else:
             namespace = {}
 
-        for assign in defines:
+        for assign in defines:KREquityPricing
             try:
                 name, value = assign.split("=", 2)
             except ValueError:
@@ -171,13 +171,13 @@ def _run(
         future_daily_reader=bundle_data.equity_daily_bar_reader,
     )
 
-    pipeline_loader = USEquityPricingLoader.without_fx(
+    pipeline_loader = KREquityPricingLoader.without_fx(
         bundle_data.equity_daily_bar_reader,
         bundle_data.adjustment_reader,
     )
 
     def choose_loader(column):
-        if column in USEquityPricing.columns:
+        if column in .columns:
             return pipeline_loader
         try:
             return custom_loader.get(column)

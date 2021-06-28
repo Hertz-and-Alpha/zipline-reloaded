@@ -1,4 +1,4 @@
-from .equity_pricing import EquityPricing, USEquityPricing
+from .equity_pricing import EquityPricing, USEquityPricing, KREquityPricing
 from .dataset import (
     BoundColumn,
     Column,
@@ -15,4 +15,5 @@ __all__ = [
     "DataSetFamily",
     "DataSetFamilySlice",
     "USEquityPricing",
+    "KREquityPricing"
 ]

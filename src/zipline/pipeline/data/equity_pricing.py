@@ -22,5 +22,5 @@ class EquityPricing(DataSet):
 
 
 # Backwards compat alias.
-# USEquityPricing = EquityPricing.specialize(US_EQUITIES)
+USEquityPricing = EquityPricing.specialize(US_EQUITIES)
 KREquityPricing = EquityPricing.specialize(KR_EQUITIES)
