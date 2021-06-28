@@ -177,7 +177,7 @@ def _run(
     )
 
     def choose_loader(column):
-        if column in .columns:
+        if column in KREquityPricing.columns:
             return pipeline_loader
         try:
             return custom_loader.get(column)
