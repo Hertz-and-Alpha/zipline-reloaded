@@ -16,6 +16,14 @@ by [Stefan Jansen](https://www.linkedin.com/in/applied-ai/) who is trying to kee
 
 - [Join our Community!](https://exchange.ml4trading.io)
 - [Documentation](https://zipline.ml4trading.io)
+  
+- 변경파일
+    - src/zipline/pipeline/data/__init__.py
+    - src/zipline/pipeline/data/equity_pricing.py
+    - src/zipline/pipeline/loaders/__init__.py
+    - src/zipline/pipeline/loaders/equity_pricing_loader.py
+    - src/zipline/utils/run_algo.py
+    
 
 ## Features
 
