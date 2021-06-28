@@ -122,7 +122,7 @@ def _run(
         else:
             namespace = {}
 
-        for assign in defines:KREquityPricing
+        for assign in defines:
             try:
                 name, value = assign.split("=", 2)
             except ValueError:
