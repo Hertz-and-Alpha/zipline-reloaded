@@ -387,9 +387,10 @@ class SQLiteAdjustmentWriter(object):
     def _write(self, tablename, expected_dtypes, frame):
         if frame is None or frame.empty:
             # keeping the dtypes correct for empty frames is not easy
-            frame = pd.DataFrame(
-                np.array([], dtype=list(expected_dtypes.items())),
-            )
+            # frame = pd.DataFrame(
+            #     np.array([], dtype=list(expected_dtypes.items())),
+            # )
+            frame = pd.DataFrame(expected_dtypes, index=[])
         else:
             if frozenset(frame.columns) != frozenset(expected_dtypes):
                 raise ValueError(
@@ -548,6 +549,8 @@ class SQLiteAdjustmentWriter(object):
             dividend_payouts = None
         else:
             dividend_payouts = dividends.copy()
+            # TODO: Check if that's the right place for this fix for pandas > 1.2.5
+            dividend_payouts.fillna(np.datetime64("NaT"), inplace=True)
             dividend_payouts["ex_date"] = (
                 dividend_payouts["ex_date"]
                 .values.astype("datetime64[s]")

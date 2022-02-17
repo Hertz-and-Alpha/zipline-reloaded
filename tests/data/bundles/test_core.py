@@ -8,7 +8,7 @@ import pandas as pd
 import sqlalchemy as sa
 from toolz import valmap
 import toolz.curried.operator as op
-from trading_calendars import TradingCalendar, get_calendar
+from zipline.utils.calendar_utils import TradingCalendar, get_calendar
 
 from zipline.assets import ASSET_DB_VERSION
 
@@ -274,6 +274,7 @@ class BundleCoreTestCase(WithInstanceTmpDir, WithDefaultDateBounds, ZiplineTestC
             ],
         }, "volume"
 
+    @pytest.mark.filterwarnings("ignore: Overwriting bundle with name")
     def test_ingest_assets_versions(self):
         versions = (1, 2)
 
